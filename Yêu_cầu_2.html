@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Yêu cầu 2</title>
+</head>
+
+<body>
+    <script>
+        let name;
+        let cmnd;
+        let birthday;
+        let email;
+        let address;
+        let typeService;
+        let typeRoom;
+        let typeCustomer;
+        let discount;
+        let quantityIncluded;
+        let rentDays;
+        let totalPays;
+
+        function input() {
+            name = prompt("Input name: ");
+            cmnd = prompt("Input CMND: ");
+            birthday = prompt("Input birthday (yyyy-MM-dd): ")
+            email = prompt("Email: ");
+            address = prompt("Input address: ");
+            typeCustomer = prompt("Input type of Customer (Diamond, Platinum, Gold, Silver, Member: )");
+            discount = prompt("Input discount: ");
+            quantityIncluded = prompt("Input quantity included: ");
+            rentDays = prompt("Input rent days: ");
+            typeService = prompt("Input type of service (Villa, House, Room): ");
+            let moneyDay = 0;
+            if (typeService == "Villa") {
+                moneyDay = 500;
+            }
+            else if (typeService == "House") {
+                moneyDay = 300;
+            }
+            else {
+                moneyDay = 200;
+            }
+            totalPays = moneyDay * parseFloat(rentDays) *
+                (1 - parseFloat(discount) / 100);
+
+            typeRoom = prompt("Input type of room ((Vip, Business, Normal): ");
+          
+        }
+
+        function display() {
+            alert("Name: " + name + "\n" +
+                "cmnd: " + cmnd + "\n" +
+                "birthday: " + birthday + "\n" +
+                "email: " + email + "\n" +
+                "address: " + address + "\n" +
+                "type of Customer: " + typeCustomer + "\n" +
+                "discount: " + discount + "\n" +
+                "quantity included: " + quantityIncluded + "\n" +
+                "rent days: " + rentDays + "\n" +
+                "type of service: " + typeService + "\n" +
+                "type of room: " + typeRoom + "\n" +
+                "Total pay: " + totalPays);
+            main();
+        }
+        function editCustomer() {
+            let chooseEdit = parseInt(prompt("Choose infomation customer you want edit:\n" +
+                "1.Name : " + name +
+                "\n2.Birthday : " + birthday +
+                "\n3.Address : " + address +
+                "\n4.Type Customer : " + typeCustomer +
+                "\n5.Discount : " + discount +
+                "\n6.quantity included: " + quantityIncluded +
+                "\n7.Type Room : " + typeRoom +
+                "\n8.Rent Days : " + rentDays +
+                "\n9.Type Service : " + typeService +
+                "\n10.Email : " + email +
+                "\n11.CMND : " + cmnd))
+            switch (chooseEdit) {
+                case 1: {
+                    name = prompt("Input name: ");
+                    break;
+                }
+                case 2: {
+                    birthday = prompt("Input birthday (yyyy-MM-dd): ")
+                    break;
+                }
+                case 3: {
+                    address = prompt("Input address: ");
+                    break;
+                }
+                case 4: {
+                    typeCustomer = prompt("Input type of Customer (Diamond, Platinum, Gold, Silver, Member: )");
+                    break;
+                }
+                case 5: {
+                    discount = prompt("Input discount: ");
+                    break;
+                }
+                case 6: {
+                    quantityIncluded = prompt("Input quantity included: ");
+                    break;
+                }
+                case 7: {
+                    typeRoom = prompt("Input type of room ((Vip, Business, Normal): ");
+                    break;
+                }
+                case 8: {
+                    rentDays = prompt("Input rent days: ");
+                    break;
+                }
+                case 9: {
+                    typeService = prompt("Input type of service (Villa, House, Room): ");
+                    break;
+                }
+                case 10: {
+                    email = prompt("Email: ");
+                    break;
+                }
+                case 11: {
+                    cmnd = prompt("Input CMND: ");
+                    break;
+                }
+                default:
+                    alert("Failed!");
+                    editCustomer();
+                    break;
+            }
+            display();
+        }
+        function displayTotalPays() {
+            let discountCondition = 0;
+            let dateNow = new Date().getFullYear();
+            alert(dateNow);
+            let birthdayCustomer = new Date(birthday).getFullYear();
+            alert(birthdayCustomer);
+            let ageCustomer = (parseInt(dateNow) -parseInt(birthdayCustomer));
+            alert(ageCustomer);
+            if (address == "Đà Nẵng") {
+                discountCondition += 20;
+                if (ageCustomer > 30) {
+                    discountCondition += 2;
+                }
+                else if (ageCustomer >= 20) {
+                    discountCondition += 1;
+                }
+            }
+            else if (address == "Huế") {
+                discountCondition += 10;
+            }
+            else if (address == "Quảng Nam") {
+                discountCondition += 5;
+            }
+            if (typeCustomer == "Diamond") {
+                discountCondition += 15;
+            } else if (typeCustomer == "Platinum") {
+                discountCondition += 10;
+            } else if (typeCustomer == "Gold") {
+                discountCondition += 5;
+            } else if (typeCustomer == "Silver") {
+                discountCondition += 2;
+            }
+            rentDays = parseInt(rentDays);
+            if (rentDays > 7) {
+                discountCondition += 30;
+            } else if (rentDays >= 5) {
+                discountCondition += 20;
+            } else if (rentDays >= 2) {
+                discountCondition += 10;
+            }
+            alert("Total Pays After Discount Condition: " + (totalPays - discountCondition));
+            main();
+        }
+        function main() {
+            let choose = parseInt(prompt("1. Show Infomation Customer.\n" +
+                "2. Add Infomation Customer.\n" +
+                "3. Edit Infomation Customer.\n" +
+                "4. Show The Amount To Be Paid After Discount.\n"));
+            switch (choose) {
+                case 1: {
+                    display();
+                    break;
+                }
+                case 2: {
+                    input();
+                    display();
+                    break;
+                }
+                case 3: {
+                    editCustomer();
+                    break;
+                }
+                case 4: {
+                    displayTotalPays();
+                    break;
+                }
+                default:
+                    alert("Failed")
+                    break;
+            }
+            main();
+        }
+        main();
+    </script>
+</body>
+
+</html>

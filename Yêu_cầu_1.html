@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Yêu cầu 1</title>
+</head>
+
+<body>
+    <script>
+        let name;
+        let cmnd;
+        let birthday;
+        let email;
+        let address;
+        let typeService;
+        let typeRoom;
+        let typeCustomer;
+        let discount;
+        let quantityIncluded;
+        let rentDays;
+        let totalPays;
+
+        function input() {
+            //             tên, số CMND, ngày tháng năm sinh, email, địa chỉ, loại
+            // Customer (Diamond, Platinum, Gold, Silver, Member), giảm giá, số lượng đi kèm, số ngày thuê,
+            // loại dịch vụ (Villa, House, Room), loại phòng thuê (Vip, Business, Normal).
+            name = prompt("Input name: ");
+            cmnd = prompt("Input CMND: ");
+            birthday = prompt("Input birthday: ")
+            email = prompt("Email: ");
+            address = prompt("Input address: ");
+            typeCustomer = prompt("Input type of Customer (Diamond, Platinum, Gold, Silver, Member: )");
+            discount = prompt("Input discount: ");
+            quantityIncluded = prompt("Input quantity included: ");
+            rentDays = prompt("Input rent days: ");
+            typeService = prompt("Input type of service (Villa, House, Room): ");
+            typeRoom = prompt("Input type of room ((Vip, Business, Normal): ");
+            totalPays = 500 * parseFloat(rentDays) * (1 - parseFloat(discount) / 100);
+        }
+
+        function display() {
+            alert("Name: " + name + "\n" +
+                "cmnd: " + cmnd + "\n" +
+                "birthday: " + birthday + "\n" +
+                "email: " + email + "\n" +
+                "address: " + address + "\n" +
+                "type of Customer: " + typeCustomer + "\n" +
+                "discount: " + discount + "\n" +
+                "quantity included: " + quantityIncluded + "\n" +
+                "rent days: " + rentDays + "\n" +
+                "type of service: " + typeService + "\n" +
+                "type of room: " + typeRoom + "\n" +
+                "Total pay: " + totalPays);
+        }
+        input();
+        display();
+    </script>
+</body>
+
+</html>

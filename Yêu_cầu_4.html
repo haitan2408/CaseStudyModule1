@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Yêu cầu 4</title>
+</head>
+
+<body>
+    <script>
+        let arrNameCustomers = [];
+        function main() {
+            let choose = parseInt(prompt("1. Add new Customer " + "\n" +
+                "2.Delete Customer"));
+            switch (choose) {
+                case 1:
+                    addNewCustomer();
+                    display();
+                    main();
+                    break;
+                case 2:
+                    deleteCustomer();
+                    main();
+                default:
+                    alert("Failed");
+                    main();
+                    break;
+            }
+        }
+        function addNewCustomer() {
+            let numCustomer = parseInt(prompt("Number of array Customer: "));
+            while(numCustomer<0) {
+                alert("Failed");
+                numCustomer = parseInt(prompt("Number of array Customer: "));
+            }
+            for (let i = 0; i < numCustomer; i++) {
+                arrNameCustomers[i]=(prompt("Input Name: " + (i + 1)));
+            }
+        }
+        function display() {
+            arrNameCustomers.sort();
+            let display = "";
+            for (let i = 0; i < arrNameCustomers.length; i++) {
+                display += (i + 1) + ". " + arrNameCustomers[i] + "\n";
+            }
+            alert(display);
+        }
+        function deleteCustomer() {
+            
+            arrNameCustomers[0]="hai";
+            arrNameCustomers[1]="hoa";
+            arrNameCustomers[2]="huy";
+            arrNameCustomers[3]="Dung";
+            arrNameCustomers[4]="Chanh";
+            arrNameCustomers[5]="Toan";
+            arrNameCustomers[6]="Linh";
+            arrNameCustomers[7]="Duy";
+            arrNameCustomers[8]="Trung";
+            arrNameCustomers[9]="Duc";
+            display();
+            let indexDelete = prompt("Choose Customer You Want Delete: ");
+            arrNameCustomers.splice(Number.parseInt(indexDelete) - 1, 1);
+            display();
+        }
+        main();
+    </script>
+</body>
+
+</html>
